@@ -2,9 +2,112 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <title></title>
 </head>
 <body>
      777777
 </body>
 </html>
+=======
+    <title>跨域实现百度搜索</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        img.title{
+            display:block;
+            margin:100px auto 0;
+            width:280px;
+            height:130px;
+        }
+        .show{
+            position:relative;
+            width:625px;
+            height:35px;
+            margin:20px auto 0;
+        }
+        #text{
+            width:500px;
+            height:35px;
+            text-indent:10px;
+            float:left;
+        }
+        .btn{
+            width:110px;
+            height:39px;
+            background:#3399ff;
+            color:#fff;
+            line-height:39px;
+            text-align:center;
+            cursor:pointer;
+            float:left;
+        }
+        .btn:hover{
+            background:#3366ff;
+        }
+        #search{
+            width:502px;
+            border:1px solid #ddd;
+            position:absolute;;
+            top:37px;
+            border-top:none;
+            display:none;
+        }
+        #search ul li{
+            list-style-type:none;
+            width:502px;
+            height:30px;
+            text-indent:10px;
+            line-height:30px;
+            font-family:"微软雅黑";
+        }
+        #search ul li a{
+            color:#000;
+            text-decoration: none;
+            display:block;
+        }
+        #search ul li a:hover{
+            background:#ddd;
+        }
+    </style>
+</head>
+<body>
+    <img src="images/1.png" class="title"/>
+    <div class="show">
+        <input type="text" id="text"/>
+        <div class="btn">百度一下</div>
+        <div id="search">
+            <ul>
+            </ul>
+        </div>
+    </div>
+    <script>
+
+        var oText=document.getElementById("text"),
+            oSea=document.getElementById("search"),
+            oUl=document.getElementsByTagName("ul")[0];
+
+        oText.onkeyup=function(){
+            var val=this.value;
+            val? oSea.style.display="block": oSea.style.display="none";
+            var Os=document.createElement("script");
+            Os.src='https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+val+'&cb=xiaoming';
+            document.body.appendChild(Os);
+        }
+        function xiaoming(mjson){
+            oUl.innerHTML="";
+            for(var i=0;i<mjson.s.length;i++){
+                var oLi=document.createElement("li");//每获取到一个数据就创造一个li
+                oLi.innerHTML='<a href=https://baidu.com/s?wd='+mjson.s[i]+'>'+mjson.s[i]+'</a>';
+                oUl.appendChild(oLi);//在ul下面添加一个子节点
+            }
+        }
+    </script>
+<!--知识点：初步了解jsonp，认识百度搜索关键字原理，通过跨域获取到数据自动添加到元素节点，让你的网站拥有强大的百度搜索引擎！-->
+</body>
+</html>
+
+
+>>>>>>> a1d28e7be759782669a9dd66d163800c96883005
